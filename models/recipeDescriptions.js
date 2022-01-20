@@ -1,6 +1,6 @@
 class Sequelize = require('sequelize');
 
-module.export= class recipeDescription extends Sequelize.Model {
+module.export= class RecipeDescription extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             foodName: {
@@ -37,5 +37,9 @@ module.export= class recipeDescription extends Sequelize.Model {
             charset: 'utf8',
             collate: 'utf8_general_ci'
         });
-    }    static associate(db) {}
+    }    static associate(db) {
+            db.RecipeDescription.hasMany(db.Ingredient, { foreignKey: 'foodIngredient', sourdeKey: 'id' });
+            db.RecipeDescription.hasMany(db.Tool, { foreignKey: 'foodTool', sourdeKey: 'id' });
+        }
+    }
 };

@@ -23,5 +23,7 @@ module.export= class Tool extends Sequelize.Model {
             collate: 'utf8_general_ci'
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Tool.belongsTo( db.RecipeDescription, {foreignKey: 'foodTool' , targetKey: 'id'});
+    }
 };

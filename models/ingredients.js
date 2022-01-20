@@ -23,5 +23,8 @@ module.export= class Ingredient extends Sequelize.Model {
             collate: 'utf8_general_ci'
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Ingredient.belongsTo(db.User, { foreignKey: 'userIngredient', targetKey: 'id'});
+        db.Ingredient.belongsTo(db.RecipeDescription, { foreignKey: 'userIngredient', targetKey: 'id'});
+    }
 };
