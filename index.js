@@ -1,11 +1,17 @@
 const express = require('express');
-const port = 3000;
+
+const port = 80;
 
 const app = express();
+ 
+
 app.set('port', port);
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 app.get('/', (req, res) => {
-    res.sendFile('index.html', {root: __dirname});
+    res.send("hello, express");
 });
 
 app.listen(port, ()=> {
