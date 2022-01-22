@@ -1,6 +1,6 @@
-class Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-module.export= class User extends Sequelize.Model {
+module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             userName: {
@@ -8,16 +8,16 @@ module.export= class User extends Sequelize.Model {
                 allowNull: false,
                 unique: true,
             },
-            passWd: {
+            passWord: {
                 type: Sequelize.STRING(30),
                 allowNull: false,
             },
             email: {
-                type: Sequelize.STRING(30),
+                type: Sequelize.STRING(50),
                 allowNull: false,
             },
             isAdmin: {
-                type: Sequelize.TINY_INT,
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
         }, {
@@ -31,7 +31,8 @@ module.export= class User extends Sequelize.Model {
             collate: 'utf8_general_ci'
         });
     }
-        static associate(db) {
-            db.User.hasMany(db.Ingredient, { foreignKey: 'userIngredient', soucekey: 'id'});
-        }
+    static associate(db) {
+        db.User.hasMany(db.Ingredient, { foreignKey: 'userIngredient', sourceKey: 'id'});
+        db.User.hasMany(db.Tool, {foreignKey: 'userTool', sourceKey: 'id' } );
+    }
 };

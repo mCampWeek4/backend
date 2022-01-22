@@ -1,6 +1,6 @@
-class Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-module.export= class Ingredient extends Sequelize.Model {
+module.exports = class Ingredient extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             name: {
@@ -16,8 +16,8 @@ module.export= class Ingredient extends Sequelize.Model {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'User',
-            tableName: 'users',
+            modelName: 'Ingredient',
+            tableName: 'ingredients',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci'
@@ -25,6 +25,6 @@ module.export= class Ingredient extends Sequelize.Model {
     }
     static associate(db) {
         db.Ingredient.belongsTo(db.User, { foreignKey: 'userIngredient', targetKey: 'id'});
-        db.Ingredient.belongsTo(db.RecipeDescription, { foreignKey: 'userIngredient', targetKey: 'id'});
+        db.Ingredient.belongsTo(db.RecipeDescription, { foreignKey: 'foodIngredient', targetKey: 'id'});
     }
 };

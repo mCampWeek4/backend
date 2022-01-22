@@ -1,23 +1,23 @@
-class Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-module.export= class Tool extends Sequelize.Model {
+module.exports = class Tool extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             name: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING(20),
                 allowNull: false,
                 unique: true,
             },
             type: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING(20),
                 allowNull: false,
             },
         }, {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'User',
-            tableName: 'users',
+            modelName: 'Tool',
+            tableName: 'tools',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci'
@@ -25,5 +25,6 @@ module.export= class Tool extends Sequelize.Model {
     }
     static associate(db) {
         db.Tool.belongsTo( db.RecipeDescription, {foreignKey: 'foodTool' , targetKey: 'id'});
+        db.Tool.belongsTo( db.User, { foreignKey: 'userTool', targetKey: 'id' });
     }
 };

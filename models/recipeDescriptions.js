@@ -1,6 +1,6 @@
-class Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-module.export= class RecipeDescription extends Sequelize.Model {
+module.exports = class RecipeDescription extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             foodName: {
@@ -9,11 +9,11 @@ module.export= class RecipeDescription extends Sequelize.Model {
                 unique: true,
             },
             time: {
-                type: Sequelize.STRING(30),
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
             level: {
-                type: Sequelize.STRING(30),
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
             country: {
@@ -21,7 +21,7 @@ module.export= class RecipeDescription extends Sequelize.Model {
                 allowNull: false,
             },
             decription: {
-                type: Sequelize.Text,
+                type: Sequelize.STRING(300),
                 allowNull: false,
             }
 
@@ -31,15 +31,15 @@ module.export= class RecipeDescription extends Sequelize.Model {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'User',
-            tableName: 'users',
+            modelName: 'RecipeDescription',
+            tableName: 'recipeDescriptions',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci'
         });
-    }    static associate(db) {
-            db.RecipeDescription.hasMany(db.Ingredient, { foreignKey: 'foodIngredient', sourdeKey: 'id' });
-            db.RecipeDescription.hasMany(db.Tool, { foreignKey: 'foodTool', sourdeKey: 'id' });
-        }
+    }    
+    static associate(db) {
+        db.RecipeDescription.hasMany(db.Ingredient, { foreignKey: 'foodIngredient', sourceKey: 'id' });
+        db.RecipeDescription.hasMany(db.Tool, { foreignKey: 'foodTool', sourceKey: 'id' });
     }
 };
