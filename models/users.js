@@ -3,6 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = class User extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+                allowNull: false,
+            },
             userName: {
                 type: Sequelize.STRING(30),
                 allowNull: false,
@@ -32,7 +38,6 @@ module.exports = class User extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.User.hasMany(db.Ingredient, { foreignKey: 'userIngredient', sourceKey: 'id'});
-        db.User.hasMany(db.Tool, {foreignKey: 'userTool', sourceKey: 'id' } );
+        db.User.hasOne(db.Refrigerator, { foreignKey: 'userIdFridge', sourceKey: 'id' });
     }
 };

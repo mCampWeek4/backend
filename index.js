@@ -3,6 +3,11 @@ const { sequelize } = require('./models');
 
 const port = 80;
 
+const usersRouter = require('./routes/user');
+
+
+
+
 const app = express();
 app.set('port', port);
 
@@ -16,13 +21,16 @@ sequelize.sync({ force: false })
 
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.send("hello, express");
-});
+// app.get('/', (req, res) => {
+//     res.send("hello, express");
+// });
 
-sequelize.sync().then( () => {
+// app.use('/users', usersRouter);
+
+
+sequelize.sync().then(() => {
     console.log("DB Connect Success!");
 }).catch((err) => {
     console.log("DB Connect Fail!");
@@ -30,6 +38,6 @@ sequelize.sync().then( () => {
 });
 
 
-app.listen(port, ()=> {
+app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });
