@@ -3,8 +3,8 @@ const { sequelize } = require('./models');
 
 const port = 80;
 
-const usersRouter = require('./routes/user');
-
+// const usersRouter = require('./routes/user');
+const fridgeRouter = require('./routes/fridge');
 
 
 
@@ -27,7 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 //     res.send("hello, express");
 // });
 
-// app.use('/users', usersRouter);
+// app.use('/user', usersRouter);
+app.use('/fridge', fridgeRouter);
 
 
 sequelize.sync().then(() => {
