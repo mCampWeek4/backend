@@ -47,6 +47,6 @@ module.exports = class RecipeDescription extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.RecipeDescription.hasOne(db.RecipeIngredient, { foreignKey: 'decriptionIdRecipe', sourceKey: 'id' });
+        db.RecipeDescription.hasOne(db.RecipeIngredient, { foreignKey: 'descriptionIdRecipe', sourceKey: 'id' });
     }
 };

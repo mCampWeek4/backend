@@ -24,7 +24,7 @@ module.exports = class RecipeIngredient extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.RecipeIngredient.belongsTo(db.RecipeDescription, { foreignKey: 'decriptionIdRecipe', targetKey: 'id' });
+        db.RecipeIngredient.belongsTo(db.RecipeDescription, { foreignKey: 'descriptionIdRecipe', targetKey: 'id' });
         db.RecipeIngredient.belongsTo(db.Ingredient, { foreignKey: 'ingredientIdRecipe', targetKey: 'id' });
     }
 };

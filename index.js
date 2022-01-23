@@ -6,7 +6,7 @@ const port = 80;
 // const usersRouter = require('./routes/user');
 const fridgeRouter = require('./routes/fridge');
 const foodRouter = require('./routes/food');
-
+const ingredientRouter = require('./routes/ingredient.js');
 
 
 const app = express();
@@ -24,13 +24,11 @@ sequelize.sync({ force: false })
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.get('/', (req, res) => {
-//     res.send("hello, express");
-// });
 
 // app.use('/user', usersRouter);
 app.use('/fridge', fridgeRouter);
 app.use('/food', foodRouter);
+app.use('/ingredient', ingredientRouter);
 
 
 sequelize.sync().then(() => {
