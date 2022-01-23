@@ -20,6 +20,10 @@ const getRecipe = async(req, res) => {
                 }
             },
             group: ['descriptionIdRecipe'],
+            // order: sequelize.fn('COUNT', sequelize.col('ingredientIdRecipe'))
+            order: [
+                [sequelize.fn('COUNT', sequelize.col('ingredientIdRecipe')), 'DESC']
+            ]
         })
 
 
