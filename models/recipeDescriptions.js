@@ -31,7 +31,7 @@ module.exports = class RecipeDescription extends Sequelize.Model {
                 allowNull: false,
             },
             url: {
-                type: Sequelize.STRING(100),
+                type: Sequelize.STRING(501),
                 allowNull: false,
             }
 

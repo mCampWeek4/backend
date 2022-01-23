@@ -8,10 +8,10 @@ const getIngredient = async(req, res) => {
     try {
         let uid = parseInt(req.body.userId, 10);
         const user = await Refrigerator.findAll({
-            attributes: ['ingredientIdFridge'],
-            where: { userIdFridge: uid }
-        })
-        console.log(user);
+                attributes: ['ingredientIdFridge'],
+                where: { userIdFridge: uid }
+            })
+            // console.log(user);
         res.send(user);
 
     } catch (err) {

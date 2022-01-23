@@ -5,6 +5,7 @@ const port = 80;
 
 // const usersRouter = require('./routes/user');
 const fridgeRouter = require('./routes/fridge');
+const foodRouter = require('./routes/food');
 
 
 
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use('/user', usersRouter);
 app.use('/fridge', fridgeRouter);
+app.use('/food', foodRouter);
 
 
 sequelize.sync().then(() => {
