@@ -43,7 +43,7 @@ router.post("/login", (req, res, next) => {
                     { id: user.id, name: user.name },
                     secretObj.secret,
                     {
-                        expiresIn: '30m'
+                        expiresIn: '24h'
                     }
                 );
                 res.json({ token: token });

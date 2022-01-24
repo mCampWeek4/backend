@@ -69,6 +69,7 @@ app.use('/user', require('./routes/user'));
 app.use('/fridge', require('./routes/fridge'));
 app.use('/food', require('./routes/food'));
 app.use('/ingredient', require('./routes/ingredient'));
+app.use('/recipe', require('./routes/recipe'));
 
 // running
 var port = 8000;
