@@ -46,14 +46,7 @@ const getRecipe = async(req, res) => {
             where: {
                 ingredientIdRecipe: {
                     [Op.in]: myIngredients
-                },
-                include: {
-                    model: model.ProductCategory,
-                    where: {
-
-                    }
                 }
-
             },
             group: ['descriptionIdRecipe'],
             order: [
